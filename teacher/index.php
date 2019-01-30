@@ -34,18 +34,6 @@ if($_SESSION['name']!='oasis')
 
 </header>
 
-<center>
-
-<div class="row">
-    <div class="content">
-      <p>One stop  solution for your class room :)</p>
-    <img src="../img/tcr.png" height="200px" width="300px" />
-
-  </div>
-
-</div>
-
-</center>
 
 </body>
 </html>

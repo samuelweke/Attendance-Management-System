@@ -42,16 +42,6 @@ if($_SESSION['name']!='oasis')
 
 <center>
 
-<!-- Content, Tables, Forms, Texts, Images started -->
-<div class="row">
-    <div class="content">
-      <p>Be attentive and be regular :)</p>
-    <img src="../img/tcr.png" height="200px" width="300px" />
-
-  </div>
-
-</div>
-<!-- Contents, Tables, Forms, Images ended -->
 
 </center>
 
