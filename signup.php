@@ -43,7 +43,7 @@ include('connect.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Online Attendance Management System 1.0</title>
+<title>Online Attendance Management System </title>
 <meta charset="UTF-8">
   
   <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -62,7 +62,7 @@ include('connect.php');
 
 <header>
 
-  <h1>Online Attendance Management System 1.0</h1>
+  <h1>Online Attendance Management System </h1>
 
 </header>
 <center>

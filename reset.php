@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Online Attendance Management System 1.0</title>
+<title>Online Attendance Management System </title>
 <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -29,7 +29,7 @@
 
 <header>
 
-  <h1>Online Attendance Management System 1.0</h1>
+  <h1>Online Attendance Management System </h1>
   <div class="navbar">
   <a href="index.php">Login</a>
 
@@ -82,7 +82,7 @@
                 $i++;
 ?>
   <strong>
-  <p style="text-align: left;">Hi there!<br>You requested for a password recovery. You may <a href="index.php">Login here</a> and enter this key as your password to login. Recovery key: <mark><?php echo $dat['password']; ?></mark><br>Regards,<br>Online Attendance Management System 1.0</p></strong>
+  <p style="text-align: left;">Hi there!<br>You requested for a password recovery. You may <a href="index.php">Login here</a> and enter this key as your password to login. Recovery key: <mark><?php echo $dat['password']; ?></mark><br>Regards,<br>Online Attendance Management System </p></strong>
 <?php
       }
           }

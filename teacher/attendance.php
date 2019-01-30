@@ -42,7 +42,7 @@ catch(Execption $e){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Online Attendance Management System 1.0</title>
+  <title>Online Attendance Management System </title>
   <meta charset="UTF-8">
 
   <link rel="stylesheet" type="text/css" href="../css/main.css">
@@ -70,7 +70,7 @@ catch(Execption $e){
 
   <header>
 
-    <h1>Online Attendance Management System 1.0</h1>
+    <h1>Online Attendance Management System </h1>
     <div class="navbar">
       <a href="index.php">Home</a>
       <a href="students.php">Students</a>
