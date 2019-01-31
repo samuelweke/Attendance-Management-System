@@ -18,12 +18,7 @@ if($_SESSION['name']!='oasis')
 
   <link rel="stylesheet" type="text/css" href="../css/main.css">
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-   
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-   
-  <link rel="stylesheet" href="styles.css" >
+  <link rel="stylesheet" href="../css/bootstrap.css">
    
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -40,7 +35,7 @@ if($_SESSION['name']!='oasis')
   <a href="teachers.php">Faculties</a>
   <a href="attendance.php">Attendance</a>
   <a href="report.php">Report</a>
-  <a href="..//logout.php">Logout</a>
+  <a href=" ../logout.php">Logout</a>
 
 </div>
 
@@ -55,19 +50,18 @@ if($_SESSION['name']!='oasis')
 
     <form method="post" action="">
 
-    <label>Select Course</label>
-    <select name="whichcourse">
-      <?php   
+      <label>Select Course</label>
+      <select name="whichcourse">
+        <?php   
+          $query = "SELECT * FROM courses";
+          $rs = mysqli_query($mysqli, $query) or die(mysql_error($mysqli));
 
-        $query = "SELECT * FROM courses";
-        $rs = mysqli_query($mysqli, $query) or die(mysql_error($mysqli));
-
-        while ($row = mysqli_fetch_assoc($rs))
-        {
-          echo '<option name="'.$row['course_id'].'" value="'.$row['course_title'].'">'.$row['course_id'].' - '.$row['course_title'].'</option>';
-        }
-      ?>
-    </select>
+          while ($row = mysqli_fetch_assoc($rs))
+          {
+            echo '<option name="'.$row['course_id'].'" value="'.$row['course_title'].'">'.$row['course_id'].' - '.$row['course_title'].'</option>';
+          }
+        ?>
+      </select>
 
       <p>  </p>
       <label>Student ID</label>
@@ -80,23 +74,23 @@ if($_SESSION['name']!='oasis')
 
     <form method="post" action="">
 
-    <label>Select Course</label>
-    <select name="whichcourse">
-       <?php   
+      <label>Select Course</label>
+      <select name="whichcourse">
+         <?php   
+            $query = "SELECT * FROM courses";
+            $rs = mysqli_query($mysqli, $query) or die(mysql_error($mysqli));
 
-          $query = "SELECT * FROM courses";
-          $rs = mysqli_query($mysqli, $query) or die(mysql_error($mysqli));
-
-          while ($row = mysqli_fetch_assoc($rs))
-          {
-            echo '<option name="'.$row['course_id'].'" value="'.$row['course_title'].'">'.$row['course_id'].' - '.$row['course_title'].'</option>';
-          }
-        ?>
-    </select>
-    <p>  </p>
+            while ($row = mysqli_fetch_assoc($rs))
+            {
+              echo '<option name="'.$row['course_id'].'" value="'.$row['course_title'].'">'.$row['course_id'].' - '.$row['course_title'].'</option>';
+            }
+          ?>
+      </select>
+      <p>  </p>
       <label>Date ( yyyy-mm-dd )</label>
       <input type="text" name="date">
       <input type="submit" name="sr_date" value="Go!" >
+
     </form>
 
     <br>
@@ -105,25 +99,25 @@ if($_SESSION['name']!='oasis')
 
    <?php
 
-    if(isset($_POST['sr_btn'])){
+      if(isset($_POST['sr_btn'])){
 
-     $sr_id = $_POST['sr_id'];
-     $course = $_POST['whichcourse'];
+        $sr_id = $_POST['sr_id'];
+        $course = $_POST['whichcourse'];
 
-     $single = mysqli_query($mysqli, "SELECT * FROM reports WHERE reports.st_id='$sr_id' AND reports.course = '$course'") or die(mysqli_error($mysqli));
+        $single = mysqli_query($mysqli, "SELECT * FROM reports WHERE reports.st_id='$sr_id' AND reports.course = '$course'") or die(mysqli_error($mysqli));
 
-     $count_tot = mysqli_num_rows($single);
-  } 
+        $count_tot = mysqli_num_rows($single);
+      } 
 
-    if(isset($_POST['sr_date'])){
+      if(isset($_POST['sr_date'])){
 
-     $sdate = $_POST['date'];
-     $course = $_POST['whichcourse'];
+        $sdate = $_POST['date'];
+        $course = $_POST['whichcourse'];
 
-     $all_query = mysqli_query($mysqli, "SELECT * FROM reports WHERE reports.stat_date='$sdate' AND reports.course = '$course'") or die(mysqli_error($mysqli));
+        $all_query = mysqli_query($mysqli, "SELECT * FROM reports WHERE reports.stat_date='$sdate' AND reports.course = '$course'") or die(mysqli_error($mysqli));
+      }
 
-    }
-    if(isset($_POST['sr_date'])){
+      if(isset($_POST['sr_date'])){
 
       ?>
 
@@ -150,12 +144,12 @@ if($_SESSION['name']!='oasis')
      ?>
         <tbody>
            <tr>
-             <td><?php echo $data['st_id']; ?></td>
-             <td><?php echo $data['st_name']; ?></td>
-             <td><?php echo $data['st_dept']; ?></td>
-             <td><?php echo $data['st_batch']; ?></td>
-             <td><?php echo $data['stat_date']; ?></td>
-             <td><?php echo $data['st_status']; ?></td>
+             <td><?php echo $data['st_id']; ?>efdf</td>
+             <td><?php echo $data['st_name']; ?>efdf</td>
+             <td><?php echo $data['st_dept']; ?>efdf</td>
+             <td><?php echo $data['st_batch']; ?>efdf</td>
+             <td><?php echo $data['stat_date']; ?>efdf</td>
+             <td><?php echo $data['st_status']; ?>efdf</td>
            </tr>
         </tbody>
 

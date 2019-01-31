@@ -9,25 +9,25 @@ include('connect.php');
       if(isset($_POST['signup'])){
 
         if(empty($_POST['email'])){
-          throw new Exception("Email cann't be empty.");
+          throw new Exception("Email can't be empty.");
         }
 
           if(empty($_POST['uname'])){
-             throw new Exception("Username cann't be empty.");
+             throw new Exception("Username can't be empty.");
           }
 
             if(empty($_POST['pass'])){
-               throw new Exception("Password cann't be empty.");
+               throw new Exception("Password can't be empty.");
             }
               
               if(empty($_POST['fname'])){
-                 throw new Exception("Username cann't be empty.");
+                 throw new Exception("Username can't be empty.");
               }
                 if(empty($_POST['phone'])){
-                   throw new Exception("Username cann't be empty.");
+                   throw new Exception("Username can't be empty.");
                 }
                   if(empty($_POST['type'])){
-                     throw new Exception("Username cann't be empty.");
+                     throw new Exception("Username can't be empty.");
                   }
 
         //insertion of data to database table admininfo
@@ -53,12 +53,12 @@ include('connect.php');
 
   <link rel="stylesheet" type="text/css" href="../css/main.css">
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="../css/bootstrap.css">
    
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
    
-  <link rel="stylesheet" href="styles.css" >
+   
    
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -76,7 +76,7 @@ include('connect.php');
       <div class="navbar">
       <a href="signup.php">Create Users</a>
       <a href="index.php">Add Data</a>
-      <a href="..//logout.php">Logout</a>
+      <a href=" ../logout.php">Logout</a>
 
     </div>
 

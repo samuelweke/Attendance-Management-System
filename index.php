@@ -62,9 +62,9 @@ if(isset($_POST['login']))
 		<title>Attendance Management System </title>
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+		<link rel="stylesheet" href="css/bootstrap.css">
 
-		<link rel="stylesheet" href="styles.css" >
+		 
 		 
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -87,7 +87,7 @@ if(isset($_POST['login']))
 		}
 		?>
 
-	<div class="container content">
+	<div class="content">
 		<div class="row">
 
 			<form method="post" class="form-horizontal col-md-6 col-md-offset-3">

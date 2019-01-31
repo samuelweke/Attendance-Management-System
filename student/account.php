@@ -69,12 +69,12 @@ catch(Exception $e){
   
   <link rel="stylesheet" type="text/css" href="../css/main.css">
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="../css/bootstrap.css">
    
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
    
-  <link rel="stylesheet" href="styles.css" >
+   
    
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -96,7 +96,7 @@ catch(Exception $e){
   <a href="students.php">Students</a>
   <a href="report.php">My Report</a>
   <a href="account.php">My Account</a>
-  <a href="..//logout.php">Logout</a>
+  <a href=" ../logout.php">Logout</a>
 
 </div>
 
@@ -190,11 +190,9 @@ catch(Exception $e){
           </tr>
           <input type="hidden" name="id" value="<?php echo $sr_id; ?>">
           
-          <tr><td></td></tr>
           <tr>
                 <td></td>
                 <td><input type="submit" class="btn btn-primary col-md-3 col-md-offset-7" value="Update" name="done" /></td>
-                
           </tr>
 
     </table>

@@ -12,14 +12,8 @@
 <title>Online Attendance Management System </title>
 <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="css/main.css">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-   
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-   
-  <link rel="stylesheet" href="styles.css" >
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.css"> 
    
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -64,8 +58,8 @@
 
           $test = $_POST['email'];
           $row = 0;
-          $query = mysql_query("select password from admininfo where email = '$test'");
-          $row = mysql_num_rows($query);
+          $query = mysqli_query($mysqli,"SELECT password FROM admininfo WHERE email = '$test'") or die(mysqli_error($mysqli));
+          $row = mysqli_num_rows($query);
 
           if($row == 0){
 ?>
@@ -76,9 +70,9 @@
 
           else{
 
-            $query = mysql_query("select password from admininfo where email = '$test'");
+            $query = mysqli_query($mysqli, "SELECT password FROM admininfo WHERE email = '$test'") or die(mysqli_error($mysqli));
             $i =0;
-            while($dat = mysql_fetch_array($query)){
+            while($dat = mysqli_fetch_array($query)){
                 $i++;
 ?>
   <strong>

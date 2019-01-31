@@ -65,12 +65,12 @@ include('connect.php');
 
   <link rel="stylesheet" type="text/css" href="../css/main.css">
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="../css/bootstrap.css">
    
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
    
-  <link rel="stylesheet" href="styles.css" >
+   
    
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -96,93 +96,82 @@ include('connect.php');
       <div class="navbar">
       <a href="signup.php">Create Users</a>
       <a href="index.php">Add Data</a>
-      <a href="..//logout.php">Logout</a>
+      <a href="../logout.php">Logout</a>
 
     </div>
 
     </header>
     <!-- Menus ended -->
 
-<center>
+<div class="text-center">
+  <center>
 <!-- Error or Success Message printint started -->
 <div class="message">
         <?php if(isset($success_msg)) echo $success_msg; if(isset($error_msg)) echo $error_msg; ?>
 </div>
 <!-- Error or Success Message printint ended -->
 
-<!-- Content, Tables, Forms, Texts, Images started -->
 <div class="content">
 
-  <center> Select: <a href="#teacher">Teacher</a> | <a href="">Student</a> <br></center>
+  <div class="text-center">
+    Select: <a href="#teacher">Teacher</a> | <a href="">Student</a> 
+  </div>
 
   <div class="row" id="student">
-
-    <!-- Old Verion-->
-<!--    <h3>Add Student Information</h3>
-      
-      
---->
-    
-
       <form method="post" class="form-horizontal col-md-6 col-md-offset-3">
-      <h4>Add Student's Information</h4>
-      <div class="form-group">
-          <label for="input1" class="col-sm-3 control-label">Student ID</label>
-          <div class="col-sm-7">
-            <input type="text" name="st_id"  class="form-control" id="input1" placeholder="student id" />
-          </div>
-      </div>
 
-      <div class="form-group">
-          <label for="input1" class="col-sm-3 control-label">Name</label>
-          <div class="col-sm-7">
-            <input type="text" name="st_name"  class="form-control" id="input1" placeholder="student full name" />
-          </div>
-      </div>
+        <h4>Add Student's Information</h4>
+        <div class="form-group">
+            <label for="input1" class="col-sm-3 control-label">Student ID</label>
+            <div class="col-sm-7">
+              <input type="text" name="st_id"  class="form-control" id="input1" placeholder="student id" />
+            </div>
+        </div>
 
-      <div class="form-group">
-          <label for="input1" class="col-sm-3 control-label">Department</label>
-          <div class="col-sm-7">
-            <input type="text" name="st_dept"  class="form-control" id="input1" placeholder="department ex. CSE" />
-          </div>
-      </div>
+        <div class="form-group">
+            <label for="input1" class="col-sm-3 control-label">Name</label>
+            <div class="col-sm-7">
+              <input type="text" name="st_name"  class="form-control" id="input1" placeholder="student full name" />
+            </div>
+        </div>
 
-      <div class="form-group">
-          <label for="input1" class="col-sm-3 control-label">Batch</label>
-          <div class="col-sm-7">
-            <input type="text" name="st_batch"  class="form-control" id="input1" placeholder="batch e.x 38" />
-          </div>
-      </div>
+        <div class="form-group">
+            <label for="input1" class="col-sm-3 control-label">Department</label>
+            <div class="col-sm-7">
+              <input type="text" name="st_dept"  class="form-control" id="input1" placeholder="department ex. CSE" />
+            </div>
+        </div>
 
-      <div class="form-group">
-          <label for="input1" class="col-sm-3 control-label">Semester</label>
-          <div class="col-sm-7">
-            <input type="text" name="st_sem"  class="form-control" id="input1" placeholder="semester ex. Fall-15" />
-          </div>
-      </div>
+        <div class="form-group">
+            <label for="input1" class="col-sm-3 control-label">Batch</label>
+            <div class="col-sm-7">
+              <input type="text" name="st_batch"  class="form-control" id="input1" placeholder="batch e.x 38" />
+            </div>
+        </div>
 
-      <div class="form-group">
-          <label for="input1" class="col-sm-3 control-label">Email</label>
-          <div class="col-sm-7">
-            <input type="email" name="st_email"  class="form-control" id="input1" placeholder="valid email" />
-          </div>
-      </div>
+        <div class="form-group">
+            <label for="input1" class="col-sm-3 control-label">Semester</label>
+            <div class="col-sm-7">
+              <input type="text" name="st_sem"  class="form-control" id="input1" placeholder="semester ex. Fall-15" />
+            </div>
+        </div>
 
+        <div class="form-group">
+            <label for="input1" class="col-sm-3 control-label">Email</label>
+            <div class="col-sm-7">
+              <input type="email" name="st_email"  class="form-control" id="input1" placeholder="valid email" />
+            </div>
+        </div>
 
-      <input type="submit" class="btn btn-primary col-md-2 col-md-offset-8" value="Add Student" name="std" />
+        <input type="submit" class="btn btn-primary col-md-2 col-md-offset-8" value="Add Student" name="std" />
+
     </form>
-
   </div>
-<br><br><br>
+
   <div class="rowtwo" id="teacher">
-    <!-- Old Verion--><!--
-    <h3>Add Teacher Information</h3>
+    <form method="post" class="form-horizontal col-md-6 col-md-offset-3">
 
-     
--->
-
-       <form method="post" class="form-horizontal col-md-6 col-md-offset-3">
-        <h4>Add Teacher's Information</h4>
+      <h4>Add Teacher's Information</h4>
       <div class="form-group">
           <label for="input1" class="col-sm-3 control-label">Teacher ID</label>
           <div class="col-sm-7">
@@ -219,15 +208,16 @@ include('connect.php');
       </div>
 
       <input type="submit" class="btn btn-primary col-md-2 col-md-offset-8" value="Add Teacher" name="tcr" />
+
     </form>
-    
   </div>
 
 
-</div><br>
+</div>
 <!-- Contents, Tables, Forms, Images ended -->
 
 </center>
+</div>
 </body>
 <!-- Body ended  -->
 </html>

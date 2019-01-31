@@ -17,12 +17,7 @@ if($_SESSION['name']!='oasis')
 <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="../css/main.css">
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-   
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-   
-  <link rel="stylesheet" href="styles.css" >
+  <link rel="stylesheet" href="../css/bootstrap.css">
    
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -41,7 +36,7 @@ if($_SESSION['name']!='oasis')
   <a href="teachers.php">Faculties</a>
   <a href="attendance.php">Attendance</a>
   <a href="report.php">Report</a>
-  <a href="..//logout.php">Logout</a>
+  <a href=" ../logout.php">Logout</a>
 
 
 </div>
