@@ -10,14 +10,16 @@
   ?>
   <?php include('connect.php');?>
 
-  <!DOCTYPE html>
-  <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+
   <head>
     <?php include("../includes/head-tag.php");?>
   </head>
   <body>
-
+    <!-- Header Begins Here -->
     <?php include("../includes/header-teacher.php");?>
+    <!-- Header Ends Here -->
 
     <center>
 
