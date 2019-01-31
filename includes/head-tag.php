@@ -1,6 +1,7 @@
 
 	<title>Attendance Management System </title>
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="../css/bootstrap.css">
 	 
