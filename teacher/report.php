@@ -1,243 +1,231 @@
-<?php
+  <?php
 
-ob_start();
-session_start();
+  ob_start();
+  session_start();
 
-if($_SESSION['name']!='oasis')
-{
-  header('location: login.php');
-}
-?>
-<?php include('connect.php');?>
+  if($_SESSION['name']!='oasis')
+  {
+    header('location: login.php');
+  }
+  ?>
+  <?php include('connect.php');?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Online Attendance Management System </title>
-<meta charset="UTF-8">
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <title>Online Attendance Management System </title>
+    <meta charset="UTF-8">
 
-  <link rel="stylesheet" type="text/css" href="../css/main.css">
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="../css/bootstrap.css">
-   
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
 
-</head>
-<body>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<header>
+  </head>
+  <body>
 
-  <h1>Online Attendance Management System </h1>
-  <div class="navbar">
-  <a href="index.php">Home</a>
-  <a href="students.php">Students</a>
-  <a href="teachers.php">Faculties</a>
-  <a href="attendance.php">Attendance</a>
-  <a href="report.php">Report</a>
-  <a href=" ../logout.php">Logout</a>
+    <header>
 
-</div>
+      <h1>Online Attendance Management System </h1>
+      <div class="navbar">
+        <a href="index.php">Home</a>
+        <a href="students.php">Students</a>
+        <a href="teachers.php">Faculties</a>
+        <a href="attendance.php">Attendance</a>
+        <a href="report.php">Report</a>
+        <a href=" ../logout.php">Logout</a>
 
-</header>
+      </div>
 
-<center>
+    </header>
 
-<div class="row">
+    <center>
 
-  <div class="content">
-    <h3>Individual Report</h3>
+      <div class="row">
 
-    <form method="post" action="">
+        <div class="content">
+          <!-- Individual Report Form -->
+          <h3>Individual Report</h3>
+          <form method="post" action="">
 
-      <label>Select Course</label>
-      <select name="whichcourse">
-        <?php   
-          $query = "SELECT * FROM courses";
-          $rs = mysqli_query($mysqli, $query) or die(mysql_error($mysqli));
+            <label>Select Course</label>
+            <select name="whichcourse_single">
+              <?php   
+              $query = "SELECT * FROM courses";
+              $rs = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
 
-          while ($row = mysqli_fetch_assoc($rs))
-          {
-            echo '<option name="'.$row['course_id'].'" value="'.$row['course_title'].'">'.$row['course_id'].' - '.$row['course_title'].'</option>';
-          }
-        ?>
-      </select>
+              while ($row = mysqli_fetch_assoc($rs)){
+                echo '<option name="'.$row['course_id'].'" value="'.$row['course_title'].'">'.$row['course_id'].' - '.$row['course_title'].'</option>';
+              }
+              ?>
+            </select>
 
-      <p>  </p>
-      <label>Student ID</label>
-      <input type="text" name="sr_id">
-      <input type="submit" name="sr_btn" value="Go!" >
+            <p>  </p>
+            <label>Student ID</label>
+            <input type="text" name="st_id">
+            <input type="submit" name="sr_btn" value="Go!" >
 
-    </form>
+          </form>
+          <br/>
+          <?php
 
-    <h3>Mass Report</h3>
+          if(isset($_POST['sr_btn'])){
 
-    <form method="post" action="">
+            $st_id = $_POST['st_id'];
+            $course = $_POST['whichcourse_single'];
 
-      <label>Select Course</label>
-      <select name="whichcourse">
-         <?php   
-            $query = "SELECT * FROM courses";
-            $rs = mysqli_query($mysqli, $query) or die(mysql_error($mysqli));
+            $single = mysqli_query($mysqli, "SELECT * FROM attendance WHERE attendance.stat_id='$st_id' AND attendance.course = '$course' ") or die(mysqli_error($mysqli));
 
-            while ($row = mysqli_fetch_assoc($rs))
-            {
-              echo '<option name="'.$row['course_id'].'" value="'.$row['course_title'].'">'.$row['course_id'].' - '.$row['course_title'].'</option>';
-            }
+            while ($row = mysqli_fetch_assoc($single)){
+
+              $single1 = mysqli_query($mysqli, "SELECT * FROM students WHERE st_id = '".$row['stat_id']."' ") or die(mysqli_error($mysqli));
+              $Total_Count = mysqli_num_rows($single);
           ?>
-      </select>
-      <p>  </p>
-      <label>Date ( yyyy-mm-dd )</label>
-      <input type="text" name="date">
-      <input type="submit" name="sr_date" value="Go!" >
+          <!--  Individual Form Ends -->
 
-    </form>
+        <table class="table table-striped">
+          <?php
+          if(isset($_POST['sr_btn'])){
 
-    <br>
-
-    <br>
-
-   <?php
-
-      if(isset($_POST['sr_btn'])){
-
-        $sr_id = $_POST['sr_id'];
-        $course = $_POST['whichcourse'];
-
-        $single = mysqli_query($mysqli, "SELECT * FROM reports WHERE reports.st_id='$sr_id' AND reports.course = '$course'") or die(mysqli_error($mysqli));
-
-        $count_tot = mysqli_num_rows($single);
-      } 
-
-      if(isset($_POST['sr_date'])){
-
-        $sdate = $_POST['date'];
-        $course = $_POST['whichcourse'];
-
-        $all_query = mysqli_query($mysqli, "SELECT * FROM reports WHERE reports.stat_date='$sdate' AND reports.course = '$course'") or die(mysqli_error($mysqli));
-      }
-
-      if(isset($_POST['sr_date'])){
-
-      ?>
-
-    <table class="table table-stripped">
-      <thead>
-        <tr>
-          <th scope="col">Student ID</th>
-          <th scope="col">Name</th>
-          <th scope="col">Department</th>
-          <th scope="col">Batch</th>
-          <th scope="col">Date</th>
-          <th scope="col">Attendance Status</th>
-        </tr>
-     </thead>
+           $count_pre = 0;
+           $i= 0;
+           while ($data = mysqli_fetch_array($single) && $data1 = mysqli_fetch_array($single1)) {
+             $i++;
+             if($data['st_status'] == "Present"){
+              $count_pre++;
+            }
+            if($i <= 1){
+             ?>
 
 
-    <?php
+             <tbody>
+              <tr>
+                <td>Student ID: </td>
+                <td><?php echo $data1['st_id']; ?></td>
+              </tr>
 
-     $i=0;
-     while ($data = mysqli_fetch_array($all_query)) {
+              <tr>
+                <td>Student Name: </td>
+                <td><?php echo $data1['st_name']; ?></td>
+              </tr>
 
-       $i++;
+              <tr>
+                <td>Department: </td>
+                <td><?php echo $data1['st_dept']; ?></td>
+              </tr>
 
-     ?>
-        <tbody>
-           <tr>
-             <td><?php echo $data['st_id']; ?>efdf</td>
-             <td><?php echo $data['st_name']; ?>efdf</td>
-             <td><?php echo $data['st_dept']; ?>efdf</td>
-             <td><?php echo $data['st_batch']; ?>efdf</td>
-             <td><?php echo $data['stat_date']; ?>efdf</td>
-             <td><?php echo $data['st_status']; ?>efdf</td>
-           </tr>
+              <tr>
+                <td>Batch: </td>
+                <td><?php echo $data1['st_batch']; ?></td>
+              </tr> 
+
+          <tr>
+            <td>Total Class (Days): </td>
+            <td><?php echo $Total_Count; ?> </td>
+          </tr>
+
+          <tr>
+            <td>Present (Days): </td>
+            <td><?php echo $count_pre; ?> </td>
+          </tr>
+
+          <tr>
+            <td>Absent (Days): </td>
+            <td><?php echo $Total_Count -  $count_pre; ?> </td>
+          </tr>
+
         </tbody>
 
-     <?php 
-   } 
-  }
-     ?>
-     
-    </table>
-
-
-    <form method="post" action="" class="form-horizontal col-md-6 col-md-offset-3">
-    <table class="table table-striped">
-
-    <?php
-
-
-    if(isset($_POST['sr_btn'])){
-
-       $count_pre = 0;
-       $i= 0;
-       while ($data = mysqli_fetch_array($single)) {
-       $i++;
-       if($data['st_status'] == "Present"){
-          $count_pre++;
-       }
-       if($i <= 1){
-     ?>
-
-
-     <tbody>
-      <tr>
-          <td>Student ID: </td>
-          <td><?php echo $data['st_id']; ?></td>
-      </tr>
-
-      <tr>
-          <td>Student Name: </td>
-          <td><?php echo $data['st_name']; ?></td>
-      </tr>
-      
-      <tr>
-          <td>Department: </td>
-          <td><?php echo $data['st_dept']; ?></td>
-      </tr>
-      
-      <tr>
-          <td>Batch: </td>
-          <td><?php echo $data['st_batch']; ?></td>
-      </tr> 
-
-           <?php
-         }
-        
+              <?php
+            }
+          }
         }
-
+     }
+  }
       ?>
-      
-      <tr>
-        <td>Total Class (Days): </td>
-        <td><?php echo $count_tot; ?> </td>
-      </tr>
+      <!-- Single Php Code Ends -->
 
-      <tr>
-        <td>Present (Days): </td>
-        <td><?php echo $count_pre; ?> </td>
-      </tr>
+      <!-- Mass Report Form Starts -->
+          <h3>Mass Report</h3>
+          <form method="post" action="">
 
-      <tr>
-        <td>Absent (Days): </td>
-        <td><?php echo $count_tot -  $count_pre; ?> </td>
-      </tr>
+            <label>Select Course</label>
+            <select name="whichcourse_mass">
+             <?php   
+             $query = "SELECT * FROM courses";
+             $rs = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
 
-    </tbody>
+             while ($row = mysqli_fetch_assoc($rs))
+             {
+              echo '<option name="'.$row['course_id'].'" value="'.$row['course_title'].'">'.$row['course_id'].' - '.$row['course_title'].'</option>';
+            }
+            ?>
+          </select>
+          <p>  </p>
+          <label>Date ( yyyy-mm-dd )</label>
+          <input type="text" name="date">
+          <input type="submit" name="sr_date" value="Go!" >
+        </form>
+        <!-- Mass Report Ends -->
 
-   <?php
+          <table class="table table-stripped">
+            <thead>
+              <tr>
+                <th scope="col">Student ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Department</th>
+                <th scope="col">Batch</th>
+                <th scope="col">Date</th>
+                <th scope="col">Attendance Status</th>
+              </tr>
+            </thead>
 
-     }  
-   
-     ?>
+        <?php
+        if(isset($_POST['sr_date'])){
+
+          $sdate = $_POST['date'];
+          $course = $_POST['whichcourse_mass'];
+
+          $mass = mysqli_query($mysqli, "SELECT * FROM attendance WHERE attendance.stat_date='$sdate' AND attendance.course = '$course'") or die(mysqli_error($mysqli));
+            while ($row = mysqli_fetch_assoc($mass)){
+              $mass1 = mysqli_query($mysqli, "SELECT * FROM students WHERE st_id = '".$row['stat_id']."' ") or die(mysqli_error($mysqli));
+                echo $row['st_status'];
+            while ($data = mysqli_fetch_array($mass) && $data1 = mysqli_fetch_array($mass1)) {
+                echo $data['st_status'];
+
+             //$i++;
+             ?>
+             <tbody>
+               <tr>
+                 <td><?php echo $data1['st_id']; ?></td>
+                 <td><?php echo $data1['st_name']; ?></td>
+                 <td><?php echo $data1['st_dept']; ?></td>
+                 <td><?php echo $data1['st_batch']; ?></td>
+                 <td><?php echo $row['stat_date']; ?></td>
+                 <td><?php echo $row['st_status']; ?></td>
+               </tr>
+             </tbody>
+
+             <?php 
+         }
+       }
+     }
+         ?>
+
+       </table>
+
+
+       <form method="post" action="" class="form-horizontal col-md-6 col-md-offset-3">
     </table>
   </form>
 
   </div>
 
-</div>
+  </div>
 
-</center>
+  </center>
 
-</body>
-</html>
+  </body>
+  </html>
