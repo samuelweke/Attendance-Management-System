@@ -14,30 +14,17 @@ if($_SESSION['name']!='oasis')
 
 <!-- head started -->
 <head>
-<title>Online Attendance Management System </title>
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="../css/main.css">
-
+    <?php include("../includes/head-tag.php");?>
 </head>
 <!-- head ended -->
 
 <!-- body started -->
 <body>
+	
+<!-- Header Begins Here -->
+<?php include("../includes/header-student.php");?>
+<!-- Header Ends Here -->
 
-<!-- Menus started-->
-<header>
-
-  <h1>Online Attendance Management System </h1>
-  <div class="navbar">
-  <a href="index.php">Home</a>
-  <a href="students.php">Students</a>
-  <a href="report.php">My Report</a>
-  <a href="account.php">My Account</a>
-  <a href="../logout.php">Logout</a>
-
-</div>
-
-</header>
 <!-- Menus ended -->
 
 <center>

@@ -42,46 +42,11 @@ catch(Execption $e){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Online Attendance Management System </title>
-  <meta charset="UTF-8">
-
-  <link rel="stylesheet" type="text/css" href="../css/main.css">
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="../css/bootstrap.css">
-
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-
-   
-
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-  <style type="text/css">
-  .status{
-    font-size: 10px;
-  }
-
-</style>
-
+    <?php include("../includes/head-tag.php");?>
 </head>
 <body>
-
-  <header>
-
-    <h1>Online Attendance Management System </h1>
-    <div class="navbar">
-      <a href="index.php">Home</a>
-      <a href="students.php">Students</a>
-      <a href="teachers.php">Faculties</a>
-      <a href="attendance.php">Attendance</a>
-      <a href="report.php">Report</a>
-      <a href=" ../logout.php">Logout</a>
-
-    </div>
-
-  </header>
+  
+  <?php include("../includes/header-teacher.php");?>
 
   <center>
 
