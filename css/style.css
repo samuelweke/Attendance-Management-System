@@ -6,3 +6,54 @@ header > h1{
 	margin-bottom: 10px;
 	margin-left: 10px;
 }
+
+.card-center{
+	max-width: 300px;
+	margin: auto;
+	margin-bottom: 50px;
+	margin-top: 50px;
+}
+
+.att{
+	font-size: 27px;
+    font-weight: 600;
+    padding-top: 15px;
+    padding-bottom: 8px;
+}
+
+.card-center > .card{
+	padding-left: 30px;
+    padding-right: 30px;
+}
+
+.card-center input[type=text], .card-center input[type=password], .card-center input[type=email] {
+	margin-top: 40px;
+}
+
+.login-label{
+	margin-top: 40px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.login-label > div{
+	margin-bottom: : 0px;}
+
+.btn-login{
+	margin-bottom: 40px;
+	margin-top: 32px;
+}
+.login-footer{
+	display: flex;
+	justify-content: space-between;
+	padding-top: 10px;
+}
+
+/*.custom-control-label:after, .custom-control-label:before {
+	top: 3px;
+}
+*/
+.login-footer p{
+	font-size: 12px !important;
+
+}

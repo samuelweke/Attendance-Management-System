@@ -49,9 +49,12 @@
 
           </form>
           <br/>
+        <table class="table table-striped">
           <?php
 
           if(isset($_POST['sr_btn'])){
+           $count_pre = 0;
+           $i= 0;
 
             $st_id = $_POST['st_id'];
             $course = $_POST['whichcourse_single'];
@@ -61,22 +64,19 @@
             while ($row = mysqli_fetch_assoc($single)){
 
               $single1 = mysqli_query($mysqli, "SELECT * FROM students WHERE st_id = '".$row['stat_id']."' ") or die(mysqli_error($mysqli));
+
               $Total_Count = mysqli_num_rows($single);
+
           ?>
           <!--  Individual Form Ends -->
-
-        <table class="table table-striped">
           <?php
-          if(isset($_POST['sr_btn'])){
-
-           $count_pre = 0;
-           $i= 0;
-           while ($data = mysqli_fetch_array($single) && $data1 = mysqli_fetch_array($single1)) {
+           while ($data1 = mysqli_fetch_array($single1)) {
              $i++;
-             if($data['st_status'] == "Present"){
+             if($row['st_status'] == "Present"){
               $count_pre++;
             }
             if($i <= 1){
+              //echo $count_pre;;
              ?>
 
 
@@ -120,7 +120,6 @@
 
               <?php
             }
-          }
         }
      }
   }
@@ -171,18 +170,16 @@
           $mass = mysqli_query($mysqli, "SELECT * FROM attendance WHERE attendance.stat_date='$sdate' AND attendance.course = '$course'") or die(mysqli_error($mysqli));
             while ($row = mysqli_fetch_assoc($mass)){
               $mass1 = mysqli_query($mysqli, "SELECT * FROM students WHERE st_id = '".$row['stat_id']."' ") or die(mysqli_error($mysqli));
-                echo $row['st_status'];
-            while ($data = mysqli_fetch_array($mass) && $data1 = mysqli_fetch_array($mass1)) {
-                echo $data['st_status'];
+            while ($data = mysqli_fetch_array($mass1)) {
 
              //$i++;
              ?>
              <tbody>
                <tr>
-                 <td><?php echo $data1['st_id']; ?></td>
-                 <td><?php echo $data1['st_name']; ?></td>
-                 <td><?php echo $data1['st_dept']; ?></td>
-                 <td><?php echo $data1['st_batch']; ?></td>
+                 <td><?php echo $data['st_id']; ?></td>
+                 <td><?php echo $data['st_name']; ?></td>
+                 <td><?php echo $data['st_dept']; ?></td>
+                 <td><?php echo $data['st_batch']; ?></td>
                  <td><?php echo $row['stat_date']; ?></td>
                  <td><?php echo $row['st_status']; ?></td>
                </tr>

@@ -10,7 +10,7 @@ header{
 body {
     color: black;/*#dce3ed;*/
     background-color: white;/*#3e4651;*/
-    font-family: Arial;
+    font-family: Lato !important;
     margin: 0;
 }
 

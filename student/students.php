@@ -24,7 +24,8 @@ if($_SESSION['name']!='oasis')
 
 <center>
 
-<div class="row">
+<div class="content">
+  <div class="row">
 
   <div class="content">
     <h3>Student List</h3>
@@ -87,6 +88,7 @@ if($_SESSION['name']!='oasis')
 
   </div>
 
+</div>
 </div>
 
 </center>

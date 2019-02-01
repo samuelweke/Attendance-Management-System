@@ -81,8 +81,8 @@ if($_SESSION['name']!='oasis')
        $count_pre = 0;
        
        //query for searching respective ID
-       $all_query = mysqli_query($mysqli, "SELECT * FROM reports WHERE reports.st_id='$sr_id' AND reports.course = '$course'") or die(mysqli_error($mysqli));
-       $count_tot = mysqli_fetch_assoc($all_query);
+       $all_query = mysqli_query($mysqli, "SELECT * FROM attendance WHERE attendance.stat_id='$sr_id' AND attendance.course = '$course'") or die(mysqli_error($mysqli));
+       $Total_Count = mysqli_num_rows($all_query);
 
        while ($data = mysqli_fetch_array($all_query)) {
          $i++;
@@ -94,26 +94,6 @@ if($_SESSION['name']!='oasis')
 
 
        <tbody>
-        <tr>
-            <td>Student ID: </td>
-            <td><?php echo $data['st_id']; ?></td>
-        </tr>
-
-        <tr>
-            <td>Student Name: </td>
-            <td><?php echo $data['st_name']; ?></td>
-        </tr>
-        
-        <tr>
-            <td>Department: </td>
-            <td><?php echo $data['st_dept']; ?></td>
-        </tr>
-        
-        <tr>
-            <td>Batch: </td>
-            <td><?php echo $data['st_batch']; ?></td>
-        </tr> 
-
              <?php
            }
           
@@ -123,7 +103,7 @@ if($_SESSION['name']!='oasis')
         
         <tr>
           <td>Total Class (Days): </td>
-          <td><?php echo $count_tot; ?> </td>
+          <td><?php echo $Total_Count; ?> </td>
         </tr>
 
         <tr>
@@ -133,7 +113,7 @@ if($_SESSION['name']!='oasis')
 
         <tr>
           <td>Absent (Days): </td>
-          <td><?php echo $count_tot -  $count_pre; ?> </td>
+          <td><?php echo $Total_Count -  $count_pre; ?> </td>
         </tr>
 
       </tbody>

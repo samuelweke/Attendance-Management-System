@@ -2,8 +2,6 @@
 
 if(isset($_POST['login']))
 {
-	//start of try block
-
 	try{
 
 		//checking empty fields
@@ -55,26 +53,20 @@ if(isset($_POST['login']))
 
 ?>
 
+
+
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<title>Attendance Management System </title>
 		<link rel="stylesheet" type="text/css" href="css/main.css">
-		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" href="css/bootstrap.css">
-		 
-		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 
-<body>
-	<div class="text-center">
-
-		<header>
-  			<h1>Online Attendance Management System </h1>
-		</header>
-
-		<h1>Login</h1>
+	<body>
 
 		<?php
 		//printing error message
@@ -84,53 +76,54 @@ if(isset($_POST['login']))
 		}
 		?>
 
-	<div class="content">
-		<div class="row">
+		<div class="container">
+			<div class="card-center">
 
-			<form method="post" class="form-horizontal col-md-6 col-md-offset-3">
-
-				<div class="form-group">
-				    <label for="input1" class="col-sm-3 control-label">Username</label>
-				    <div class="col-sm-7">
-				      	<input type="text" name="username"  class="form-control" id="input1" placeholder="Enter your Username" />
-				    </div>
+				<div class="text-center">
+					<p class="att">Attendance Management System</p>
+					<!-- <p>Log in to your account</p> -->
 				</div>
 
-				<div class="form-group">
-				    <label for="input1" class="col-sm-3 control-label">Password</label>
-				    <div class="col-sm-7">
-				      	<input type="password" name="password"  class="form-control" id="input1" placeholder="Enter your Password" />
-				    </div>
+				<div class="card">
+					<form method="post" class="form-horizontal">
+
+						<div class="form-group">
+						    <div class="">
+						      	<input type="text" name="username"  class="form-control" id="input1" placeholder="Username" />
+						    </div>
+						</div>
+
+						<div class="form-group">
+						    <div class="">
+						      	<input type="password" name="password"  class="form-control" id="input1" placeholder="Password" />
+						    </div>
+						</div>
+
+						<div class="form-group">
+							<div class="login-label">
+								<label>
+									<input type="radio" class="custom-radio" name="type" id="optionsRadios1" value="student" checked> Student
+								</label>
+							  	<label>
+							    	<input type="radio" class="custom-radio" name="type" id="optionsRadios1" value="teacher"> Teacher
+							 	</label>
+							    <label>
+							    	<input type="radio" class="custom-radio" name="type" id="optionsRadios1" value="admin"> Admin
+							    </label>
+							</div>
+						</div>
+						
+						<input type="submit" class="btn btn-block btn-primary btn-login " value="Login" name="login" />
+					</form>
 				</div>
 
-				<div class="form-group" class="radio">
-					<label for="input1" class="col-sm-3 control-label">Role</label>
-					<div class="col-sm-7">
-						<label>
-							<input type="radio" name="type" id="optionsRadios1" value="student" checked> Student
-						</label>
-					  	<label>
-					    	<input type="radio" name="type" id="optionsRadios1" value="teacher"> Teacher
-					 	</label>
-					    <label>
-					    	<input type="radio" name="type" id="optionsRadios1" value="admin"> Admin
-					    </label>
-					</div>
+				<div class="login-footer">
+					<p><a href="reset.php">Forgot your password?</a></p>
+					<p><a href="signup.php">Don't have an account?</a></p>
 				</div>
 
-				<input type="submit" class="btn btn-primary col-md-3 col-md-offset-7" value="Login" name="login" />
-			</form>
+			</div>
 		</div>
-	</div>
 
-
-
-<br><br>
-<p><strong>Forgot your password? <a href="reset.php">Reset here.</a></strong></p>
-<p><strong>Don't have an account <a href="signup.php">Signup</a> here</strong></p>
-
-
-
-	</div>
-</body>
+	</body>
 </html>

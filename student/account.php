@@ -78,8 +78,8 @@ catch(Exception $e){
 
 <!-- Content, Tables, Forms, Texts, Images started -->
 <center>
-
-<div class="row">
+<div class="content">
+  <div class="row">
     <div class="content">
 
           <h3>Update Account</h3>
@@ -179,6 +179,7 @@ catch(Exception $e){
       </div>
 
   </div>
+</div>
 
   </center>
 <!-- Contents, Tables, Forms, Images ended -->

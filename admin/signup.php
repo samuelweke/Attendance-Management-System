@@ -31,7 +31,7 @@ include('connect.php');
                   }
 
         //insertion of data to database table admininfo
-        $result = mysql_query("insert into admininfo(username,password,email,fname,phone,type) values('$_POST[uname]','$_POST[pass]','$_POST[email]','$_POST[fname]','$_POST[phone]','$_POST[type]')");
+        $result = mysqli_query($mysqli, "INSERT INTO admininfo(username,password,email,fname,phone,type) VALUES('$_POST[uname]','$_POST[pass]','$_POST[email]','$_POST[fname]','$_POST[phone]','$_POST[type]')") or die(mysqli_error($mysqli));
         $success_msg="Signup Successfully!";
 
   
@@ -95,51 +95,7 @@ include('connect.php');
 <div class="content">
 
   <div class="row">
-    <!-- Old version started -->
-    <!--<form action="" method="post">
-      
-      <table>
-        
-        <tr>
-          <td>Email</td>
-          <td><input type="text" name="email"></td>
-        </tr>
-        <tr>
-          <td>Username</td>
-          <td><input type="text" name="uname"></td>
-
-        </tr>
-        <tr>
-          <td>Password</td>
-          <td><input type="Password" name="pass"></td>
-        </tr>
-
-        <tr>
-          <td>Full Name</td>
-          <td><input type="text" name="fname"></td>
-        </tr>
-
-        <tr>
-          <td>Phone Number</td>
-          <td><input type="text" name="phone"></td>
-        </tr>
-
-        <tr>
-          <td>Type</td>
-          <td>      <select name="type">
-        <option name="teacher" value="teacher">Teacher</option>
-        <option name="student" value="student">Student</option>
-      </select></td>
-        </tr>
-
-        <tr><td><br></td></tr>
-        <tr>
-          <td></td>
-          <td><input type="submit" name="signup" value="Signup"></td>
-        </tr>
-
-      </table>
-    </form>--><!-- Old version ended -->
+   
 
     <form method="post" class="form-horizontal col-md-6 col-md-offset-3">
 
@@ -205,6 +161,5 @@ include('connect.php');
 </center>
 
 </body>
-<!-- Body ended  -->
 
 </html>
