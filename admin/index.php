@@ -27,7 +27,7 @@ include('connect.php');
         VALUES ('".$_POST["st_id"]."','".$_POST["st_name"]."','".$_POST["st_dept"]."', 
         '".$_POST["st_batch"]."', '".$_POST["st_sem"]."', '".$_POST["st_email"]."')";
 
-        $result = mysqli_query($mysqli, $sql);
+        $result = mysqli_query($mysqli, $sql) or die(mysql_error($mysqli));
         $success_msg = "Student added successfully.";
 
     }
@@ -39,8 +39,8 @@ include('connect.php');
 
           //teachers data insertion to the database table "teachers"
 
-          $sql = "INSERT into teachers(tc_id,tc_name,tc_dept,tc_email, tc_course)
-        VALUES ('".$_POST["tc_id"]."','".$_POST["tc_name"]."','".$_POST["tc_dept"]."', 
+          $sql = "INSERT into teachers(tc_name,tc_dept,tc_email, tc_course)
+        VALUES ('".$_POST["tc_name"]."','".$_POST["tc_dept"]."', 
         '".$_POST["tc_email"]."', '".$_POST["tc_course"]."')";
 
         $result = mysqli_query($mysqli, $sql);
@@ -58,33 +58,25 @@ include('connect.php');
 
 <!DOCTYPE html>
 <html lang="en">
-<!-- head started -->
-<head>
-<title>Online Attendance Management System </title>
-<meta charset="UTF-8">
+
+  <head>
+  <title>Attendance Management System </title>
+  <meta charset="UTF-8">
 
   <link rel="stylesheet" type="text/css" href="../css/main.css">
-  <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="../css/bootstrap.css">
-   
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-   
-   
-   
-  <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style type="text/css">
 
-  .message{
-    padding: 10px;
-    font-size: 15px;
-    font-style: bold;
-    color: black;
-  }
-</style>
-</head>
-<!-- head ended -->
+  <style type="text/css">
+
+    .message{
+      padding: 10px;
+      font-size: 15px;
+      font-style: bold;
+      color: black;
+    }
+  </style>
+  </head>
 
 <!-- body started -->
 <body>
@@ -92,9 +84,8 @@ include('connect.php');
     <!-- Menus started-->
     <header>
 
-      <h1>Online Attendance Management System </h1>
+      <h1>Attendance Management System </h1>
       <div class="navbar">
-      <a href="signup.php">Create Users</a>
       <a href="index.php">Add Data</a>
       <a href="../logout.php">Logout</a>
 
@@ -172,19 +163,7 @@ include('connect.php');
     <form method="post" class="form-horizontal col-md-6 col-md-offset-3">
 
       <h4>Add Teacher's Information</h4>
-      <div class="form-group">
-          <label for="input1" class="col-sm-3 control-label">Teacher ID</label>
-          <div class="col-sm-7">
-            <input type="text" name="tc_id"  class="form-control" id="input1" placeholder="teacher's id" />
-          </div>
-      </div>
 
-      <div class="form-group">
-          <label for="input1" class="col-sm-3 control-label">Name</label>
-          <div class="col-sm-7">
-            <input type="text" name="tc_name"  class="form-control" id="input1" placeholder="teacher full name" />
-          </div>
-      </div>
 
       <div class="form-group">
           <label for="input1" class="col-sm-3 control-label">Department</label>

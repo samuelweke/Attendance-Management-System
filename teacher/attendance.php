@@ -26,7 +26,7 @@ try{
       VALUES ('$stat_id','$course','$st_status', '$dp')" ;
 
       $result = mysqli_query($mysqli, $stat) or die(mysqli_error($mysqli));
-      $att_msg = "Attendance Recorded.";
+      $att_msg = "Attendance Recorded Successfully!";
 
     }
 
@@ -42,7 +42,47 @@ catch(Execption $e){
 <html lang="en">
 
   <head>
-      <?php include("../includes/head-tag.php");?>
+      <title>Attendance Management System </title>
+      <link rel="stylesheet" type="text/css" href="../css/main.css">
+      <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+      <style type="text/css">
+        
+        .attendance{
+            margin-top: 50px ;
+            margin-bottom: 60px;
+        }
+
+        .attendance > p:first-of-type{
+          font-size: 22px;
+          font-weight: 600;
+        }
+
+        .attendance > p:nth-of-type(2){
+          font-size: 16px;
+          font-weight: 500;
+          background-color: #3da822;
+          max-width: 260px;
+          text-align: center;
+        }
+
+        .show-form{
+          max-width: 260px; 
+        }
+
+        .mark-att select{
+          max-width: 260px;
+        }
+
+        .att-table{
+          margin-top: 80px;
+        }
+
+        .att-table button{
+          max-width: 200px;
+          margin:auto;
+        }
+
+      </style>
   </head>
 
   <body>
@@ -50,111 +90,100 @@ catch(Execption $e){
     <?php include("../includes/header-teacher.php");?>
     <!-- Header Begins Here -->
     
-    <center>
+    
+    <div class="container">
+      <div class="attendance">
+          <p>Attendance of <?php echo date('Y-m-d'); ?></p>
+          <p><?php if(isset($att_msg)) echo $att_msg; if(isset($error_msg)) echo $error_msg; ?></p>
 
-      <div class="row">
+          <div class="show-form">
+            <form action="" method="post" class="form-group">
+              <div class="form-group">
+                <div>
+                  <input type="text" name="whichbatch" class="form-control" placeholder="Enter the batch to continue" />
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block" name="batch">Show</button>
+            </form>
+          </div>
 
-        <div class="content">
-          <h3>Attendance of <?php echo date('Y-m-d'); ?></h3>
-          <br>
+          <div class="mark-att">
+            <form action="" method="post">
+              <div class="form-group">
+                <select name="whichcourse" id="input1" class="form-control">
+                  <option>Select Course</option>
+                <?php   
 
-          <center><p><?php if(isset($att_msg)) echo $att_msg; if(isset($error_msg)) echo $error_msg; ?></p></center> 
+                    $query = "SELECT * FROM courses";
+                    $rs = mysqli_query($mysqli, $query) or die(mysql_error($mysqli));
 
-          <form action="" method="post" class="form-horizontal ">
+                    while ($row = mysqli_fetch_assoc($rs))
+                    {
+                      echo '<option name="'.$row['course_code'].'" value="'.$row['course_title'].'">'.$row['course_code'].' - '.$row['course_title'].'</option>';
+                    }
+                ?>
+               </select>
+              </div>
 
-           <div class="form-group">
+              <div class="att-table">
+                <table class="table table-striped table-bordered table-responsive-md">
+                  <thead>
+                    <tr>
+                      <th scope="col">Matric No</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Department</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <?php
 
-             <label for="input1" class="col-sm-3 control-label">Select Batch</label>
-             <div class="col-sm-7">
-              <input type="text" name="whichbatch"  class="form-control" id="input1" placeholder="enter your batch to continue" />
+                  if(isset($_POST['batch'])){
 
-            </div>
+                   $i=0;
+                   $radio = 0;
+                   $batch = $_POST['whichbatch'];
+                   $all_query = mysqli_query($mysqli, "SELECT * FROM students WHERE st_batch='$batch' ORDER BY st_id ASC") or die(mysqli_error($mysqli));
 
+                   while ($data = mysqli_fetch_array($all_query)) {
+                     $i++;
+                     ?>
 
-            <input type="submit" class="btn btn-primary col-md-2 " value="Show!" name="batch" />
+                     <body>
+                       <tr>
+                         <td><?php echo $data['st_id']; ?> <input type="hidden" name="stat_id[]" value="<?php echo $data['st_id']; ?>"> </td>
+                         <td><?php echo $data['st_name']; ?></td>
+                         <td><?php echo $data['st_dept']; ?></td>
+                         <td><?php echo $data['st_email']; ?></td>
+                         <td>
+                           <div >
+                             <label>Present</label>
+                           <input type="radio" name="st_status[<?php echo $radio; ?>]" value="Present"  checked>
+                           <label>Absent </label>
+                           <input type="radio" name="st_status[<?php echo $radio; ?>]" value="Absent" >
+                           </div>
+                         </td>
+                       </tr>
+                     </body>
 
-          </form>
+                     <?php
 
-          <div class="content"></div>
-          <form action="" method="post">
+                     $radio++;
+                   } 
+                 }
+                 ?>
+              </table>
+              <button type="submit" class="btn btn-primary btn-block" name="att">Save</button>
+              </div>
 
-            <div class="form-group">
-              <label >Select Course</label>
-              <select name="whichcourse" id="input1">
+          
+            
+          
 
-              <?php   
-
-                  $query = "SELECT * FROM courses";
-                  $rs = mysqli_query($mysqli, $query) or die(mysql_error($mysqli));
-
-                  while ($row = mysqli_fetch_assoc($rs))
-                  {
-                    echo '<option name="'.$row['course_id'].'" value="'.$row['course_title'].'">'.$row['course_id'].' - '.$row['course_title'].'</option>';
-                  }
-              ?>
-
-             </select>
-           </div>
-
-           <table class="table table-stripped">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Department</th>
-                <th scope="col">Batch</th>
-                <th scope="col">Semester</th>
-                <th scope="col">Email</th>
-                <th scope="col">Status</th>
-              </tr>
-            </thead>
-            <?php
-
-            if(isset($_POST['batch'])){
-
-             $i=0;
-             $radio = 0;
-             $batch = $_POST['whichbatch'];
-             $all_query = mysqli_query($mysqli, "SELECT * FROM students WHERE st_batch='$batch' ORDER BY st_id ASC") or die(mysqli_error($mysqli));
-
-             while ($data = mysqli_fetch_array($all_query)) {
-               $i++;
-               ?>
-               <body>
-                 <tr>
-                   <td><?php echo $data['st_id']; ?> <input type="hidden" name="stat_id[]" value="<?php echo $data['st_id']; ?>"> </td>
-                   <td><?php echo $data['st_name']; ?></td>
-                   <td><?php echo $data['st_dept']; ?></td>
-                   <td><?php echo $data['st_batch']; ?></td>
-                   <td><?php echo $data['st_sem']; ?></td>
-                   <td><?php echo $data['st_email']; ?></td>
-                   <td>
-                     <label>Present</label>
-                     <input type="radio" name="st_status[<?php echo $radio; ?>]" value="Present" checked>
-                     <label>Absent </label>
-                     <input type="radio" name="st_status[<?php echo $radio; ?>]" value="Absent">
-                   </td>
-                 </tr>
-               </body>
-
-               <?php
-
-               $radio++;
-             } 
-           }
-           ?>
-         </table>
-
-         <center><br>
-          <input type="submit" class="btn btn-primary col-md-2 col-md-offset-10" value="Save!" name="att" />
-        </center>
-
-      </form>
+            </form>
+          </div>
+      </div>
     </div>
-
-  </div>
-
-  </center>
 
   </body>
 </html>

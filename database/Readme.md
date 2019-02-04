@@ -9,4 +9,3 @@ MySQL is used as database. Database design is made easy to understand.
 - teachers
 - students
 - attendance
-- reports (as view)

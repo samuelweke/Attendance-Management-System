@@ -19,72 +19,88 @@ if($_SESSION['name']!='oasis')
       <?php include("../includes/head-tag.php");?>
   </head>
 
-<body>
-  <!-- Header Begins Here -->
-  <?php include("../includes/header-teacher.php");?>
-  <!-- Header Ends Here -->
+  <body>
+    <!-- Header Begins Here -->
+    <?php include("../includes/header-teacher.php");?>
+    <!-- Header Ends Here -->
 
-<center>
+    <div class="container">
+      <div class="view-stu">
+        <p>View Students</p>
+      </div>
 
-<div class="row">
+      <form method="post" action="">
+        <div class="form-group">
+            <div class="dept-form">
+              <!-- <input type="text" name="sr_batch"  class="form-control" placeholder="Enter Department" /> -->
+              <select name="sr_batch" class="form-control">
+                  <option value>Enter Department</option>
+                 <?php   
+                 $query = "SELECT * FROM students";
+                 $rs = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
 
-  <div class="content">
-    <h3>Student List</h3>
-    <br>
-    <form method="post" action="">
-      <label>Batch (ex. 38)</label>
-      <input type="text" name="sr_batch">
-      <input type="submit" name="sr_btn" value="Go!" >
-    </form>
-    <br>
-    <table class="table table-stripped">
-      <thead>
-        <tr>
-          <th scope="col">Student ID</th>
-          <th scope="col">Name</th>
-          <th scope="col">Department</th>
-          <th scope="col">Batch</th>
-          <th scope="col">Semester</th>
-          <th scope="col">Email</th>
-        </tr>
-      </thead>
+                 while ($row = mysqli_fetch_assoc($rs))
+                 {
+                  echo '<option name="'.$row['st_dept'].'" >'.$row['st_dept'].' </option>';
+                }
+                ?>
+              </select>
 
-   <?php
+              <div class="form-group">
+                <div>
+                  <button type="submit" class="btn btn-primary  btn-block" name="sr_btn">Enter</button>
+                </div>
+              </div>  
+            </div>
 
-    if(isset($_POST['sr_btn'])){
-     
-     $srbatch = $_POST['sr_batch'];
-     $i=0;
-     
-     $all_query = mysqli_query($mysqli, "SELECT * FROM students WHERE students.st_batch = '$srbatch' ORDER BY st_id ASC ") or die(mysqli_error($mysqli));
-     
-     while ($data = mysqli_fetch_array($all_query)) {
-       $i++;
-     
-     ?>
-  <tbody>
-     <tr>
-       <td><?php echo $data['st_id']; ?></td>
-       <td><?php echo $data['st_name']; ?></td>
-       <td><?php echo $data['st_dept']; ?></td>
-       <td><?php echo $data['st_batch']; ?></td>
-       <td><?php echo $data['st_sem']; ?></td>
-       <td><?php echo $data['st_email']; ?></td>
-     </tr>
-  </tbody>
+        </div>
+      </form>
 
-     <?php 
-          } 
-              }
-      ?>
-      
-    </table>
+      <div class="stu-table">
+        <table class="table table-striped table-bordered ">
+          <thead>
+            <tr>
+              <th scope="col">Matric No</th>
+              <th scope="col">Name</th>
+              <th scope="col">Department</th>
+              <th scope="col">Batch</th>
+              <th scope="col">Email</th>
+            </tr>
+          </thead>
 
-  </div>
+         <?php
 
-</div>
+          if(isset($_POST['sr_btn'])){
+           
+           $srdept = $_POST['sr_batch'];
+           $i=0;
+           
+           $all_query = mysqli_query($mysqli, "SELECT * FROM students WHERE students.st_dept = '$srdept' ORDER BY st_id ASC ") or die(mysqli_error($mysqli));
+           
+           while ($data = mysqli_fetch_array($all_query)) {
+             $i++;
+           
+           ?>
 
-</center>
+          <tbody>
+             <tr>
+               <td><?php echo $data['st_id']; ?></td>
+               <td><?php echo $data['st_name']; ?></td>
+               <td><?php echo $data['st_dept']; ?></td>
+               <td><?php echo $data['st_batch']; ?></td>
+               <td><?php echo $data['st_email']; ?></td>
+             </tr>
+          </tbody>
 
-</body>
+         <?php 
+              } 
+                  }
+          ?>
+          
+        </table>
+      </div>
+
+    </div>
+
+  </body>
 </html>

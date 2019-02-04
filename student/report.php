@@ -46,7 +46,7 @@ if($_SESSION['name']!='oasis')
 
             while ($row = mysqli_fetch_assoc($rs))
             {
-              echo '<option name="'.$row['course_id'].'" value="'.$row['course_title'].'">'.$row['course_id'].' - '.$row['course_title'].'</option>';
+              echo '<option name="'.$row['course_code'].'" value="'.$row['course_title'].'">'.$row['course_code'].' - '.$row['course_title'].'</option>';
             }
             ?>
         </select>

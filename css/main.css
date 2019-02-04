@@ -10,7 +10,6 @@ header{
 body {
     color: black;/*#dce3ed;*/
     background-color: white;/*#3e4651;*/
-    font-family: Lato !important;
     margin: 0;
 }
 
@@ -30,7 +29,7 @@ table td button{
 .navbar a {
     float: left;
     display: block;
-    color: white; /*#dce3ed;*/
+    color: white; #dce3ed;
     text-align: center;
     padding: 14px 20px;
     text-decoration: none;
@@ -39,13 +38,6 @@ table td button{
 .navbar a:hover {
     background-color: #ddd;
     color: black;
-}
-
-
-.row {  
-
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .content {
@@ -63,12 +55,32 @@ option{
 a:hover{
     color: blue;
 }
-p{
-    font-size: 15px;
-}
 
 img{
 
     height: 200px;
     width: 300px;
 }
+
+.view-stu{
+    margin-top: 50px;
+    font-size: 22px;
+    font-weight: 600;
+}
+.dept-form{
+    max-width: 260px;
+}
+
+.dept-form > select{
+    margin-top: 15px;
+}
+
+.dept-form > .form-group{
+    margin-top: 10px;
+}
+
+.stu-table{
+    margin-top: 50px;
+    margin-bottom: 60px;
+}
+

@@ -22,7 +22,7 @@
     <div class="card-center">
 
       <div class="text-center">
-        <p class="att">Attendance Management System</p>
+        <p class="att pt-5">Attendance Management System</p>
         <!-- <p>Log in to your account</p> -->
       </div>
 
@@ -44,11 +44,8 @@
         <p><a href="signup.php">Don't have an account?</a></p>
       </div>
 
-    </div>
-  </div>
-
-  <div class="content">
-      <div class="row">
+      <div style="margin-top: 20px;">
+      <div>
 
         <?php
 
@@ -62,7 +59,7 @@
             if($row == 0){
         ?>
 
-        <div  class="content"><p>Email is not associated with any account. Contact OAMS 1.0</p></div>
+        <div><p>Sorry, this email is not associated with any account</p></div>
 
         <?php
             }
@@ -74,8 +71,8 @@
               while($dat = mysqli_fetch_array($query)){
                   $i++;
         ?>
-        <strong>
-        <p style="text-align: left;">Hi there!<br>You requested for a password recovery. You may <a href="index.php">Login here</a> and enter this key as your password to login. Recovery key: <mark><?php echo $dat['password']; ?></mark><br>Regards,<br>Online Attendance Management System </p></strong>
+        
+        <p >Hi <br>You requested for a password recovery. You may <a href="index.php">Login here</a> and enter this key as your password to login. Recovery key: <mark><?php echo $dat['password']; ?></mark><br>Regards,<br>Attendance Management System </p>
         <?php
           }
             }
@@ -86,6 +83,11 @@
 
     </div>
   </div>
+
+    </div>
+  </div>
+
+  
 </body>
 
 </html>

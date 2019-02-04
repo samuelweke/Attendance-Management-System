@@ -5,30 +5,26 @@ include('connect.php');
   try{
     
       if(isset($_POST['signup'])){
-
-        if(empty($_POST['email'])){
+          if(empty($_POST['email'])){
           throw new Exception("Email can't be empty.");
         }
 
-        if(empty($_POST['uname'])){
-           throw new Exception("Username can't be empty.");
-        }
+          if(empty($_POST['uname'])){
+             throw new Exception("Username can't be empty.");
+          }
 
-        if(empty($_POST['pass'])){
-           throw new Exception("Password can't be empty.");
-        }
-        
-        if(empty($_POST['fname'])){
-           throw new Exception("Username can't be empty.");
-        }
-        if(empty($_POST['phone'])){
-           throw new Exception("Username can't be empty.");
-        }
-        if(empty($_POST['type'])){
-           throw new Exception("Username can't be empty.");
-        }
+            if(empty($_POST['pass'])){
+               throw new Exception("Password can't be empty.");
+            }
+              
+              if(empty($_POST['fname'])){
+                 throw new Exception("Full Name can't be empty.");
+              }
+                  if(empty($_POST['type'])){
+                     throw new Exception("Type can't be empty.");
+                  }      
 
-        $result = mysqli_query($mysqli, "INSERT INTO admininfo(username,password,email,fname,phone,type) VALUES('$_POST[uname]','$_POST[pass]','$_POST[email]','$_POST[fname]','$_POST[phone]','$_POST[type]')") or die(mysqli_error($mysqli));
+        $result = mysqli_query($mysqli, "INSERT INTO admininfo(email,username,password,fname,type) VALUES('$_POST[email]','$_POST[uname]','$_POST[pass]','$_POST[fname]','$_POST[type]')") or die(mysqli_error($mysqli));
         $success_msg="Signup Successfully!";
 
   }
@@ -54,7 +50,7 @@ include('connect.php');
 
 <body>
   <div class="container">
-      <div class="card-center">
+      <div class="card-center" style="margin-top: 20px; margin-bottom: 0;">
 
         <div class="text-center">
           <p class="att py-0">Attendance Management System</p>
@@ -65,32 +61,26 @@ include('connect.php');
           <form method="post" class="form-horizontal">
 
             <div class="form-group">
-                <div class="">
+                <div>
                     <input type="text" name="email"  class="form-control" id="input1" placeholder="Email" />
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="">
+                <div>
                     <input type="text" name="uname"  class="form-control" id="input1" placeholder="Username" />
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="">
-                    <input type="password" name="password"  class="form-control" id="input1" placeholder="Password" />
+                <div>
+                    <input type="password" name="pass"  class="form-control" id="input1" placeholder="Password" />
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="">
+                <div>
                     <input type="text" name="fname"  class="form-control" id="input1" placeholder="Full Name" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="">
-                    <input type="text" name="phone"  class="form-control" id="input1" placeholder="Phone Number" />
                 </div>
             </div>
 
@@ -113,7 +103,7 @@ include('connect.php');
         </div>
 
         <div class="login-footer">
-          <p><a href="index.php">Already have an account?</a></p>
+          <p class="mb-0"><a href="index.php">Already have an account?</a></p>
         </div>
 
       </div>

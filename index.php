@@ -22,7 +22,7 @@ if(isset($_POST['login']))
 		if($row['c'] > 0 && $_POST["type"] == 'teacher'){
 			session_start();
 			$_SESSION['name']="oasis";
-			header('location: teacher/index.php');
+			header('location: teacher/students.php');
 		}
 
 		else if($row['c'] > 0 &&  $_POST["type"] == 'student'){
@@ -38,7 +38,7 @@ if(isset($_POST['login']))
 		}
 
 		else{
-			throw new Exception("Username,Password or Role is wrong, try again!");
+			throw new Exception("Username or Password is wrong!");
 			
 			header('location: login.php');
 		}
@@ -88,13 +88,13 @@ if(isset($_POST['login']))
 					<form method="post" class="form-horizontal">
 
 						<div class="form-group">
-						    <div class="">
+						   <div>
 						      	<input type="text" name="username"  class="form-control" id="input1" placeholder="Username" />
 						    </div>
 						</div>
 
 						<div class="form-group">
-						    <div class="">
+						   <div>
 						      	<input type="password" name="password"  class="form-control" id="input1" placeholder="Password" />
 						    </div>
 						</div>
@@ -112,7 +112,7 @@ if(isset($_POST['login']))
 							    </label>
 							</div>
 						</div>
-						
+
 						<input type="submit" class="btn btn-block btn-primary btn-login " value="Login" name="login" />
 					</form>
 				</div>
