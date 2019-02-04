@@ -16,6 +16,11 @@ if($_SESSION['name']!='oasis')
 <html lang="en">
   <head>
       <?php include("../includes/head-tag.php");?>
+      <style>
+        .stu-det select{
+          margin-bottom: 10px;
+        }
+      </style>
   </head>
 
   <body>
@@ -24,23 +29,12 @@ if($_SESSION['name']!='oasis')
   <?php include("../includes/header-student.php");?>
   <!-- Header Ends Here -->
 
-  <center>
-
-  <!-- Content, Tables, Forms, Texts, Images started -->
-  <div class="row">
-
-    <div class="content">
-      <h3>Student Report</h3>
-      <br>
-      <form method="post" action="" class="form-horizontal col-md-6 col-md-offset-3">
-
-    <div class="form-group">
-
-      <label  for="input1" class="col-sm-3 control-label">Select Course</label>
-        <div class="col-sm-4">
-        <select name="whichcourse" id="input1">
+  <div class="container">
+    <h3>My Report</h3>
+    <div class="form-group stu-det">
+      <form method="post" action="">
+        <select class="form-control" name="whichcourse" id="input1">
            <?php   
-
             $query = "SELECT * FROM courses";
             $rs = mysqli_query($mysqli, $query) or die(mysql_error($mysqli));
 
@@ -50,20 +44,14 @@ if($_SESSION['name']!='oasis')
             }
             ?>
         </select>
-        </div>
 
-    </div>
-
-          <div class="form-group">
-             <label for="input1" class="col-sm-3 control-label">Your ID</label>
-                <div class="col-sm-7">
-                    <input type="text" name="sr_id"  class="form-control" id="input1" placeholder="enter your id" />
-                </div>
-          </div>
-          <input type="submit" class="btn btn-primary col-md-3 col-md-offset-7" value="Go!" name="sr_btn" />
+        <div class="form-group">
+          <input type="text" name="sr_id"  class="form-control" id="input1" placeholder="Enter your Matric No"/>
+          <button type="submit" class="btn btn-primary btn-block" name="sr_btn">Show</button>
+        </div>  
       </form>
-
-      <div class="content"><br></div>
+    </div>
+      
 
       <form method="post" action="" class="form-horizontal col-md-6 col-md-offset-3">
       <table class="table table-striped">
@@ -125,12 +113,8 @@ if($_SESSION['name']!='oasis')
        ?>
       </table>
     </form>
-    </div>
+      </div>
 
-  </div>
-  <!-- Contents, Tables, Forms, Images ended -->
-
-  </center>
 
   </body>
 
