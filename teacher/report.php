@@ -150,7 +150,7 @@
       <!-- Single Php Code Ends -->
 
       <!-- Mass Report Form Starts -->
-          <p>Mass Report</p>
+          <p>Date Report</p>
           <div class="mass-report">
             <form class="form-group" method="post" action="">
               <select class="form-control" name="whichcourse_mass" >
@@ -172,7 +172,7 @@
         <!-- Mass Report Ends -->
 
           <div class="mass-table" id="mass">
-            <table class="table table-striped table-bordered">
+            <table class="table table-striped table-bordered table-responsive-md">
               <thead>
                 <tr>
                   <th scope="col">Student ID</th>
@@ -237,7 +237,7 @@
       </div>
         <!-- Third Report Ends -->
 
-          <table class="table table-stripped table-bordered overall-table">
+          <table class="table table-stripped table-bordered table-responsive-md overall-table">
             <thead>
               <tr>
                 <th scope="col">Student ID</th>

@@ -28,7 +28,7 @@ if(isset($_POST['login']))
 		else if($row['c'] > 0 &&  $_POST["type"] == 'student'){
 			session_start();
 			$_SESSION['name']="oasis";
-			header('location: student/index.php');
+			header('location: student/report.php');
 		}
 
 		else if($row['c'] > 0 && $_POST["type"] == 'admin'){
