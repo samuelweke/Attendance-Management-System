@@ -46,7 +46,9 @@ catch(Execption $e){
       <link rel="stylesheet" type="text/css" href="../css/main.css">
       <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
       <style type="text/css">
-        
+        a:hover{
+    text-decoration: none;
+}
         .attendance{
             margin-top: 50px ;
             margin-bottom: 60px;

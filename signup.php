@@ -4,25 +4,7 @@ include('connect.php');
 
   try{
     
-      if(isset($_POST['signup'])){
-          if(empty($_POST['email'])){
-          throw new Exception("Email can't be empty.");
-        }
-
-          if(empty($_POST['uname'])){
-             throw new Exception("Username can't be empty.");
-          }
-
-            if(empty($_POST['pass'])){
-               throw new Exception("Password can't be empty.");
-            }
-              
-              if(empty($_POST['fname'])){
-                 throw new Exception("Full Name can't be empty.");
-              }
-                  if(empty($_POST['type'])){
-                     throw new Exception("Type can't be empty.");
-                  }      
+      if(isset($_POST['signup'])){     
 
         $result = mysqli_query($mysqli, "INSERT INTO admininfo(email,username,password,fname,type) VALUES('$_POST[email]','$_POST[uname]','$_POST[pass]','$_POST[fname]','$_POST[type]')") or die(mysqli_error($mysqli));
         $success_msg="Signup Successfully!";
@@ -62,25 +44,25 @@ include('connect.php');
 
             <div class="form-group">
                 <div>
-                    <input type="text" name="email"  class="form-control" id="input1" placeholder="Email" />
+                    <input type="text" name="email"  class="form-control" id="input1" placeholder="Email" required />
                 </div>
             </div>
 
             <div class="form-group">
                 <div>
-                    <input type="text" name="uname"  class="form-control" id="input1" placeholder="Username" />
+                    <input type="text" name="uname"  class="form-control" id="input1" placeholder="Username" required />
                 </div>
             </div>
 
             <div class="form-group">
                 <div>
-                    <input type="password" name="pass"  class="form-control" id="input1" placeholder="Password" />
+                    <input type="password" name="pass"  class="form-control" id="input1" placeholder="Password" required />
                 </div>
             </div>
 
             <div class="form-group">
                 <div>
-                    <input type="text" name="fname"  class="form-control" id="input1" placeholder="Full Name" />
+                    <input type="text" name="fname"  class="form-control" id="input1" placeholder="Full Name" required />
                 </div>
             </div>
 

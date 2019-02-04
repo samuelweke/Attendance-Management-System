@@ -4,11 +4,6 @@ if(isset($_POST['login']))
 {
 	try{
 
-		//checking empty fields
-		if(empty($_POST['username'])){
-			throw new Exception("Username is required!");
-			
-		}
 		
 		//establishing connection with db and things
 		include ('connect.php');
@@ -89,13 +84,13 @@ if(isset($_POST['login']))
 
 						<div class="form-group">
 						   <div>
-						      	<input type="text" name="username"  class="form-control" id="input1" placeholder="Username" />
+						      	<input type="text" name="username"  class="form-control" id="input1" placeholder="Username" required />
 						    </div>
 						</div>
 
 						<div class="form-group">
 						   <div>
-						      	<input type="password" name="password"  class="form-control" id="input1" placeholder="Password" />
+						      	<input type="password" name="password"  class="form-control" id="input1" placeholder="Password" required />
 						    </div>
 						</div>
 

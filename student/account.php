@@ -65,6 +65,11 @@ catch(Exception $e){
 <!-- head started -->
 <head>
     <?php include("../includes/head-tag.php");?>
+    <style type="text/css">
+      a:hover{
+    text-decoration: none;
+}
+    </style>
 </head>
 <!-- head ended -->
 
@@ -106,10 +111,10 @@ catch(Exception $e){
             <div class="form-group">
                 <label for="input1" class="col-sm-3 control-label">Student ID</label>
                 <div class="col-sm-7">
-                  <input type="text" name="sr_id"  class="form-control" id="input1" placeholder="enter your id to continue" />
+                  <input type="text" name="sr_id"  class="form-control" id="input1" placeholder="Enter you Matric No " />
                 </div>
             </div>
-            <input type="submit" class="btn btn-primary col-md-3 col-md-offset-7" value="Go!" name="sr_btn" />
+            <input type="submit" class="btn btn-primary col-md-3 col-md-offset-7" value="Show" name="sr_btn" />
           </form>
           <div class="content"></div>
 

@@ -16,6 +16,9 @@
   <head>
     <?php include("../includes/head-tag.php");?>
     <style>
+    a:hover{
+    text-decoration: none;
+}
       .report{
         margin-top: 50px;
         margin-bottom: 60px;

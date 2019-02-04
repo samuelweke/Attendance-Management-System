@@ -17,6 +17,9 @@ if($_SESSION['name']!='oasis')
   <head>
       <?php include("../includes/head-tag.php");?>
       <style>
+            a:hover{
+          text-decoration: none;
+      }
         .container{
           margin-top: 50px;
           margin-bottom: 60px;
@@ -30,6 +33,9 @@ if($_SESSION['name']!='oasis')
         .container p  {
           font-size: 22px;
           font-weight: 600;
+        }
+        .table{
+          max-width: 260px;
         }
       </style>
   </head>
@@ -64,7 +70,7 @@ if($_SESSION['name']!='oasis')
     </div>
       
 
-      <form method="post" action="" class="form-horizontal col-md-6 col-md-offset-3">
+      <form method="post" action="" class="form-horizontal">
       <table class="table table-striped">
 
      <?php

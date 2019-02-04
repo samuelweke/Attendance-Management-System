@@ -17,6 +17,11 @@ if($_SESSION['name']!='oasis')
 
   <head>
       <?php include("../includes/head-tag.php");?>
+      <style type="text/css">
+        a:hover{
+    text-decoration: none;
+}
+      </style>
   </head>
 
   <body>
