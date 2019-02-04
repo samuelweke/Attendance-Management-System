@@ -17,8 +17,19 @@ if($_SESSION['name']!='oasis')
   <head>
       <?php include("../includes/head-tag.php");?>
       <style>
-        .stu-det select{
-          margin-bottom: 10px;
+        .container{
+          margin-top: 50px;
+          margin-bottom: 60px;
+        }
+        .stu-det{
+          max-width: 260px;
+        }
+        .stu-det select, .stu-det input{
+          margin-bottom: 1rem;
+        }
+        .container p  {
+          font-size: 22px;
+          font-weight: 600;
         }
       </style>
   </head>
@@ -30,7 +41,7 @@ if($_SESSION['name']!='oasis')
   <!-- Header Ends Here -->
 
   <div class="container">
-    <h3>My Report</h3>
+    <p>My Report</p>
     <div class="form-group stu-det">
       <form method="post" action="">
         <select class="form-control" name="whichcourse" id="input1">
