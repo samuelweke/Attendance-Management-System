@@ -6,7 +6,7 @@ include('connect.php');
     
       if(isset($_POST['signup'])){     
 
-        $result = mysqli_query($mysqli, "INSERT INTO admininfo(email,username,password,fname,type) VALUES('$_POST[email]','$_POST[uname]','$_POST[pass]','$_POST[fname]','$_POST[type]')") or die(mysqli_error($mysqli));
+        $result = mysqli_query($mysqli, "INSERT INTO admin(email,username,password,fname,type) VALUES('$_POST[email]','$_POST[uname]','$_POST[pass]','$_POST[fname]','$_POST[type]')") or die(mysqli_error($mysqli));
         $success_msg="Signup Successfully!";
 
   }

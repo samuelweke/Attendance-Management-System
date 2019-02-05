@@ -82,12 +82,15 @@
               $course = $_POST['whichcourse_single'];
 
               $single = mysqli_query($mysqli, "SELECT * FROM attendance WHERE attendance.stat_id='$st_id' AND attendance.course = '$course' ") or die(mysqli_error($mysqli));
+              
+              $present = mysqli_query($mysqli, "SELECT * FROM attendance WHERE attendance.stat_id='$st_id' AND attendance.st_status = 'Present' AND attendance.course = '$course' ") or die(mysqli_error($mysqli));
 
               while ($row = mysqli_fetch_assoc($single)){
 
                 $single1 = mysqli_query($mysqli, "SELECT * FROM students WHERE st_id = '".$row['stat_id']."' ") or die(mysqli_error($mysqli));
 
                 $Total_Count = mysqli_num_rows($single);
+                $count_pre = mysqli_num_rows($present);
 
           ?>
 
@@ -95,9 +98,6 @@
 
            while ($data1 = mysqli_fetch_array($single1)) {
              $i++;
-             if($row['st_status'] == "Present"){
-              $count_pre++;
-            }
             if($i <= 1){
               //echo $count_pre;;
           ?>
@@ -246,6 +246,7 @@
                 <th scope="col">Student ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Department</th>
+                <th scope="col">Course</th>
                 <th scope="col">Batch</th>
                 <th scope="col">Total Class Days</th>
                 <th scope="col">Days Present</th>
@@ -259,28 +260,38 @@
           $course = $_POST['whichcourse_3'];
           $i = 0;
           $third = mysqli_query($mysqli, "SELECT * FROM attendance WHERE attendance.course = '$course' ") or die(mysqli_error($mysqli));
+
             while ($row = mysqli_fetch_assoc($third)){
               $third1 = mysqli_query($mysqli, "SELECT * FROM students WHERE st_id = '".$row['stat_id']."' ") or die(mysqli_error($mysqli));
+
               $Total_Classes = mysqli_num_rows($third);
+
             while ($data = mysqli_fetch_array($third1)) {
-              if (($row['st_status']) == "Present") {
-                $i++;
-              }
-             ?>
-             <tbody>
+              $std_id = $row['stat_id'];
+              $Total = mysqli_query($mysqli, "SELECT * FROM attendance WHERE attendance.stat_id='$std_id' AND attendance.course = '$course' ") or die(mysqli_error($mysqli));
+
+              $present = mysqli_query($mysqli, "SELECT * FROM attendance WHERE attendance.stat_id='$std_id' AND attendance.st_status = 'Present' AND attendance.course = '$course' ") or die(mysqli_error($mysqli));
+
+              $Total_Classes = mysqli_num_rows($Total);
+              $i = mysqli_num_rows($present);
+
+                
+              ?>
+            <tbody>
                <tr>
                  <td><?php echo $data['st_id']; ?></td>
                  <td><?php echo $data['st_name']; ?></td>
                  <td><?php echo $data['st_dept']; ?></td>
+                 <td><?php echo $row['course']; ?></td>
                  <td><?php echo $data['st_batch']; ?></td>
                  <td><?php echo $Total_Classes ?></td>
                  <td><?php echo $i ?></td>
                  <td><?php echo $Total_Classes - $i ?></td>
                  <td><?php echo ($i / $Total_Classes) *100 , "%" ?></td>
                </tr>
-             </tbody>
+            </tbody>
 
-             <?php 
+             <?php
          }
        }
      }

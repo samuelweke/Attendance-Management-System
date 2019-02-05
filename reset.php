@@ -53,7 +53,7 @@
 
             $test = $_POST['email'];
             $row = 0;
-            $query = mysqli_query($mysqli,"SELECT password FROM admininfo WHERE email = '$test'") or die(mysqli_error($mysqli));
+            $query = mysqli_query($mysqli,"SELECT password FROM admin WHERE email = '$test'") or die(mysqli_error($mysqli));
             $row = mysqli_num_rows($query);
 
             if($row == 0){
@@ -66,7 +66,7 @@
 
             else{
 
-              $query = mysqli_query($mysqli, "SELECT password FROM admininfo WHERE email = '$test'") or die(mysqli_error($mysqli));
+              $query = mysqli_query($mysqli, "SELECT password FROM admin WHERE email = '$test'") or die(mysqli_error($mysqli));
               $i =0;
               while($dat = mysqli_fetch_array($query)){
                   $i++;

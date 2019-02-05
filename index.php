@@ -10,7 +10,7 @@ if(isset($_POST['login']))
 		
 		//checking login info into database
 		
-		$result=mysqli_query($mysqli, "SELECT COUNT(*) as 'c' FROM admininfo WHERE username = '".$_POST['username']."' AND password='".$_POST['password']."' and type='".$_POST['type']."' ") or die(mysqli_error($mysqli));
+		$result=mysqli_query($mysqli, "SELECT COUNT(*) as 'c' FROM admin WHERE username = '".$_POST['username']."' AND password='".$_POST['password']."' and type='".$_POST['type']."' ") or die(mysqli_error($mysqli));
 
 		$row = mysqli_fetch_assoc($result);
 

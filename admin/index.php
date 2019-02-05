@@ -23,11 +23,11 @@ include('connect.php');
 
       //students data insertion to database table "students"
 
-        $sql = "INSERT into students(st_id,st_name,st_dept,st_batch,st_sem,st_email)
+        $sql = "INSERT into students(st_id,st_name,st_dept,st_batch,st_email)
         VALUES ('".$_POST["st_id"]."','".$_POST["st_name"]."','".$_POST["st_dept"]."', 
-        '".$_POST["st_batch"]."', '".$_POST["st_sem"]."', '".$_POST["st_email"]."')";
+        '".$_POST["st_batch"]."', '".$_POST["st_email"]."')";
 
-        $result = mysqli_query($mysqli, $sql) or die(mysql_error($mysqli));
+        $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
         $success_msg = "Student added successfully.";
 
     }

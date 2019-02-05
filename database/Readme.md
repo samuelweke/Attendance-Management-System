@@ -5,7 +5,7 @@ MySQL is used as database. Database design is made easy to understand.
 - Create a database attendance
 - Import \*.sql, if everything Okay then database will be imported.
 ## Tables
-- admininfo
+- admin
 - teachers
 - students
 - attendance
